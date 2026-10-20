@@ -43,19 +43,7 @@ Projet de stage de fin de 2ème année du cycle ingénieur (Data Science).
 - Architecture modulaire en microservices (frontend, backend, NLP, RAG)
 - Conversations stockées dans PostgreSQL
 
-## Architecture
 
-```mermaid
-flowchart LR
-    U[Utilisateur<br/>Application Angular] -->|message| B[Backend<br/>Node.js / Express]
-    B -->|classifier l'intention| N[Service NLP<br/>Flask + Mistral<br/>:5005]
-    B -->|question de fond| R[Service RAG<br/>Flask + FAISS + Mistral<br/>:5000]
-    B <-->|utilisateurs, messages,<br/>intentions, mots sensibles| D[(PostgreSQL)]
-    N --> O[Ollama<br/>Mistral]
-    R --> O
-    R --> K[(Base de connaissances FAQ<br/>index FAISS)]
-    B -->|réponse| U
-```
 
 | Composant | Rôle | Technologie | Port par défaut |
 |---|---|---|---|
