@@ -1,0 +1,9 @@
+Flask
+python-dotenv
+psycopg2-binary
+numpy
+spacy
+langchain<1.0
+langchain-community<0.4
+sentence-transformers
+faiss-cpu
