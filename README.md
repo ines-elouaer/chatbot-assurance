@@ -162,21 +162,6 @@ Les comptes sont créés par `backend/db/seed.sql`. Utilisez `generate-hash.js` 
 node backend/generate-hash.js
 ```
 
-## Variables d'environnement
-
-Ne committez jamais le vrai fichier `.env`. Copiez `.env.example` et renseignez vos propres valeurs.
-
-**backend/.env**
-
-| Variable | Description |
-|---|---|
-| `PORT` | Port du backend |
-| `DB_HOST`, `DB_PORT` | Hôte et port de PostgreSQL |
-| `DB_NAME`, `DB_USER`, `DB_PASSWORD` | Identifiants de la base |
-| `JWT_SECRET` | Secret de signature des tokens |
-| `NLP_URL` | URL du service NLP (ex. `http://localhost:5005`) |
-| `RAG_URL` | URL du service RAG (ex. `http://localhost:5000`) |
-| `FRONTEND_URL` | URL publique du frontend utilisée dans les liens générés |
 
 **rag-server / nlp-server**
 
