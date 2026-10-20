@@ -1,0 +1,29 @@
+<div class="chatbot-container">
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="app-title">Chatbot Assurance</div>
+    <div class="nav-actions">
+      <a routerLink="/history" class="history-link">📜 Historique</a>
+      <button class="logout" (click)="logout()">🚪 Déconnexion</button>
+    </div>
+  </div>
+
+  <!-- Chat area -->
+  <div class="chat-container">
+    <h2 *ngIf="showWelcome" class="welcome-text">Toujours prêt à répondre.</h2>
+
+    <div class="messages">
+      <div *ngFor="let msg of messages" [ngClass]="{'user-message': msg.from === 'user', 'bot-message': msg.from === 'bot'}">
+  <span [innerHTML]="formatBotMessage(msg.text)"></span>
+</div>
+
+    </div>
+
+    <!-- Input area -->
+    <div class="input-area">
+      <input [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" placeholder="Tapez votre message..." />
+      <button (click)="sendMessage()">Envoyer</button>
+      <button (click)="startListening()" [ngClass]="{'microphone-btn': true, 'active': isListening}" title="Parler au chatbot 🎤">🎤</button>
+    </div>
+  </div>
+</div>

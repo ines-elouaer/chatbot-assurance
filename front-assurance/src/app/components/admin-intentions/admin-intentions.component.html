@@ -1,0 +1,47 @@
+<div class="intentions-container">
+  <div class="card">
+    <div class="header">
+      <h2>💡 Gestion des intentions</h2>
+      <button (click)="goBack()" class="back-btn">← Dashboard</button>
+    </div>
+
+    <!-- Formulaire ajout/modif -->
+    <form (ngSubmit)="editingId ? saveEdit() : addIntention()" class="form-group">
+  <input [(ngModel)]="newKeyword" name="keyword" placeholder="Question" required>
+  <input [(ngModel)]="newResponse" name="response" placeholder="Réponse" required>
+  <input [(ngModel)]="newLink" name="link" placeholder="Lien (optionnel)">
+  <button type="submit" class="add-btn">{{ editingId ? 'Modifier' : 'Ajouter' }}</button>
+</form>
+
+<div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+
+    <!-- Liste des intentions -->
+    <table class="intentions-table" *ngIf="intentions.length > 0; else noData">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Réponse</th>
+          <th>Lien</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let intent of intentions">
+          <td>{{ intent.keyword }}</td>
+          <td>{{ intent.response }}</td>
+          <td>{{ intent.link || '—' }}</td>
+          <td>
+            <button (click)="startEdit(intent)" class="action-btn edit">Modifier</button>
+            <button (click)="deleteIntention(intent.id)" class="action-btn delete">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <ng-template #noData>
+      <div class="no-data">Aucune intention enregistrée.</div>
+    </ng-template>
+  </div>
+</div>

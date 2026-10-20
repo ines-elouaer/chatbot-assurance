@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Bienvenue sur le Chatbot Assurance</h2>
+    <p>Connectez-vous à votre espace</p>
+
+    <form (ngSubmit)="onLogin()">
+      <label>Se connecter comme :</label>
+      <select [(ngModel)]="selectedRole" name="role" required>
+        <option value="">-- Choisir un rôle --</option>
+        <option value="client">Client</option>
+        <option value="agent">Agent</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <input type="text" placeholder="Nom d'utilisateur" [(ngModel)]="username" name="username" required>
+      <input type="password" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+
+      <button type="submit">Connexion</button>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+
+  <footer>© 2025 Assurance Chatbot</footer>
+</div>

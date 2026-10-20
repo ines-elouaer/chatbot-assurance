@@ -1,0 +1,35 @@
+<div class="register-container">
+  <h2>Inscription</h2>
+  <form (ngSubmit)="onRegister()">
+    <label>Nom d'utilisateur :</label>
+    <input type="text" [(ngModel)]="username" name="username" required />
+
+    <label>Mot de passe :</label>
+    <input type="password" [(ngModel)]="password" name="password" required />
+
+   <label>Rôle :</label>
+<select [(ngModel)]="role" name="role" (change)="onRoleChange()" required>
+  <option value="client">Client</option>
+  <option value="agent">Agent</option>
+</select>
+
+    <label>Région :</label>
+    <select [(ngModel)]="region" name="region" (change)="onRegionChange()">
+  <option *ngFor="let r of regions" [value]="r">{{ r }}</option>
+</select>
+
+
+
+<div *ngIf="role === 'client'">
+  <label>Agent</label>
+  <select [(ngModel)]="agentId" name="agentId" required>
+    <option *ngFor="let a of agents" [value]="a.id">{{ a.username }}</option>
+  </select>
+</div>
+
+    <button type="submit">S'inscrire</button>
+
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  </form>
+</div>

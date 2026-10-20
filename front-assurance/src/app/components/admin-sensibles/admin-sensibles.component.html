@@ -1,0 +1,47 @@
+﻿<div class="sensibles-container">
+  <div class="card">
+    <div class="header">
+      <h2>ðŸ”‘ Gestion des mots sensibles</h2>
+      <button routerLink="/admin/dashboard" class="back-btn">â† Dashboard</button>
+    </div>
+
+    <!-- Formulaire ajout/modif -->
+    <div class="form-group">
+      <input type="text" [(ngModel)]="newWord" placeholder="Ajouter un mot sensible..." />
+      <button (click)="editing ? modifierMot() : ajouter()" class="add-btn">
+        {{ editing ? 'Modifier' : 'Ajouter' }}
+      </button>
+    </div>
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+    <!-- Table -->
+    <table class="sensibles-table" *ngIf="sensibles.length > 0; else noData">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Mot</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mot of sensibles">
+          <td>{{ mot.id }}</td>
+          <td>{{ mot.word }}</td>
+          <td>
+  <button (click)="modifier(mot)" class="action-btn edit">Modifier</button>
+  <button (click)="supprimer(mot.id)" class="action-btn delete">Supprimer</button>
+</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noData>
+      <div class="no-data">Aucun mot sensible enregistrÃ©.</div>
+    </ng-template>
+
+  </div>
+
+
+</div>

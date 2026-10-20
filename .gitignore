@@ -1,0 +1,42 @@
+﻿# Secrets et variables d'environnement
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Node.js / Angular
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.angular/
+**/.angular/
+
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+venv/
+**/venv/
+.venv/
+**/.venv/
+.pytest_cache/
+**/.pytest_cache/
+
+# Environnements et fichiers locaux
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Tous les environnements Python, y compris les anciens
+venv_*/
+**/venv_*/
+
+# Python virtual environments
+pyvenv.cfg
+
+# Local backup files
+rag-server/*_backup.py

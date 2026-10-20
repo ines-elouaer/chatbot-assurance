@@ -1,0 +1,12 @@
+<div class="admin-dashboard">
+  <div class="card">
+    <h2>📋 Tableau de bord Administrateur</h2>
+
+    <div class="btn-group">
+      <button [routerLink]="['/admin/intentions']"> Gestion des intentions</button>
+      <button [routerLink]="['/admin/sensibles']"> Gestion des mots sensibles</button>
+      <button [routerLink]="['/admin-history']"> Historique des messages</button>
+      <button class="logout-btn" (click)="logout()">Déconnexion</button>
+    </div>
+  </div>
+</div>

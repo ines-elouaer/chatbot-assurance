@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+<div class="header">
+  <h2>📊 Statistiques Agent</h2>
+  <button class="back-btn" (click)="goBack()">← Retour au Dashboard</button>
+</div>
+
+
+  <!-- Nombre de clients -->
+  <div class="card clients-count">
+    <div class="icon"><i class="fas fa-users"></i></div>
+    <div>
+      <h4>Nombre de clients : {{ stats?.clientsCount }}</h4>
+     
+    </div>
+  </div>
+<div class="periode-select">
+  <label for="periode">Période :</label>
+  <select id="periode" [(ngModel)]="periode" (change)="loadStats()">
+    <option value="jour">Aujourd'hui</option>
+    <option value="semaine">Cette semaine</option>
+    <option value="mois">Ce mois</option>
+  </select>
+</div>
+
+  <!-- Graphiques -->
+  <div class="charts">
+    <div class="chart-card">
+      <h4>Top questions posées</h4>
+      <canvas baseChart
+        [data]="{
+          labels: topQuestionsLabels,
+          datasets: [{ data: topQuestionsData, label: 'Questions', backgroundColor: '#00796b' }]
+        }"
+        chartType="bar">
+      </canvas>
+    </div>
+
+    <div class="chart-card">
+      <h4>Évolution des questions</h4>
+      <canvas baseChart
+        [data]="{
+          labels: questionsByDayLabels,
+          datasets: [{ data: questionsByDayData, label: 'Questions', fill: true, borderColor: '#1e88e5', backgroundColor: 'rgba(30,136,229,0.1)' }]
+        }"
+        [options]="chartOptions"
+        chartType="line">
+      </canvas>
+    </div>
+  </div>
+
+ <!-- Mots sensibles détectés -->
+<div class="card mots-sensibles">
+  <h4>Mots sensibles détectés</h4>
+  <input type="text" [(ngModel)]="filterMot" placeholder="Rechercher un mot...">
+  <table>
+    <thead>
+      <tr>
+        <th>Mot détecté</th>
+        <th>Nombre d’occurrences</th>
+      </tr>
+    </thead>
+   <tbody>
+  <tr *ngFor="let m of stats?.motsSensibles">
+    <td>{{ m.word }}</td>
+    <td>{{ m.count }}</td>
+  </tr>
+</tbody>
+
+  </table>
+</div>
+
+
+
+  
+
+</div>

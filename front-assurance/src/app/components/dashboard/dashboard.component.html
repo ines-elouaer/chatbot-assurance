@@ -1,0 +1,16 @@
+<h2>Historique des messages</h2>
+
+<ul *ngIf="messages.length > 0; else aucun">
+  <li *ngFor="let msg of messages">
+    <p>
+      [<strong>{{ msg.sender }}</strong>] {{ msg.text }}<br />
+      (Utilisateur ID: {{ msg.user_id }})<br />
+      <small>{{ msg.created_at }}</small>
+    </p>
+    <hr />
+  </li>
+</ul>
+
+<ng-template #aucun>
+  <p>Aucun message disponible.</p>
+</ng-template>

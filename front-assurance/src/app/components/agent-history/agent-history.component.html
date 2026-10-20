@@ -1,0 +1,72 @@
+<div class="history-container">
+  <div class="header">
+    <h2>📋 Historique des Messages</h2>
+    <button class="back-btn" routerLink="/agent/home">← Retour Accueil</button>
+  </div>
+
+ <div class="filters">
+  <div class="filter-group">
+    <label>Client :</label>
+    <select [(ngModel)]="selectedClientId">
+      <option [ngValue]="null">-- Sélectionner un client --</option>
+      <option *ngFor="let client of clients" [ngValue]="client.id">
+        {{ client.username }}
+      </option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="startDate">Date de début :</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate" />
+  </div>
+
+  <div class="filter-group">
+    <label for="endDate">Date de fin :</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate" />
+  </div>
+
+  <button (click)="applyFilter()" class="filter-btn">Filtrer</button>
+</div>
+
+
+  <div *ngIf="paginatedMessages.length === 0" class="no-data">
+    ❌ Aucun message à afficher. Veuillez appliquer un filtre.
+  </div>
+
+  <div *ngIf="paginatedMessages.length > 0">
+    <div class="pagination-settings">
+      <label for="pageSize">Messages par page :</label>
+      <select id="pageSize" [(ngModel)]="pageSize" (change)="paginateMessages()">
+        <option [value]="5">5</option>
+        <option [value]="10">10</option>
+        <option [value]="20">20</option>
+        <option [value]="50">50</option>
+      </select>
+    </div>
+
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Utilisateur</th>
+          <th>Message Client</th>
+          <th>Réponse Bot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pair of paginatedMessages">
+          <td>{{ pair.user.created_at || pair.bot.created_at | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ pair.user.username || 'bot' }}</td>
+          <td>{{ pair.user.text }}</td>
+          <td>{{ parseBotReply(pair.bot.text) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination-container">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">⬅ Précédent</button>
+      <span>Page {{ currentPage }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant ➡</button>
+    </div>
+  </div>
+</div>
