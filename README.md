@@ -4,22 +4,7 @@ Un assistant conversationnel full-stack pour une compagnie d'assurance. Il combi
 
 Projet de stage de fin de 2ème année du cycle ingénieur (Data Science).
 
-![Capture du chatbot](docs/screenshots/chatbot.png)
 
-## Table des matières
-
-1. [Fonctionnalités](#fonctionnalités)
-2. [Architecture](#architecture)
-3. [Technologies](#technologies)
-4. [Structure du projet](#structure-du-projet)
-5. [Démarrage](#démarrage)
-6. [Variables d'environnement](#variables-denvironnement)
-7. [Aperçu de l'API](#aperçu-de-lapi)
-8. [Pipeline IA : méthodologie](#pipeline-ia--méthodologie)
-9. [Captures d'écran](#captures-décran)
-10. [Sécurité](#sécurité)
-11. [Limites et feuille de route](#limites-et-feuille-de-route)
-12. [Auteure](#auteure)
 
 ## Fonctionnalités
 
@@ -222,22 +207,6 @@ Le message de l'utilisateur est envoyé à Mistral (servi par Ollama) avec un pr
 - À la question, les chunks les plus similaires sont récupérés et transmis à Mistral pour générer une réponse fondée sur eux.
 - L'index peut être reconstruit sans redémarrer le service grâce à `/api/reload`.
 
-**3. Évaluation**
-*À compléter :* décrivez votre jeu de test (nombre de questions), les métriques utilisées (par exemple taux de retrouvailles du bon passage, justesse des réponses évaluée manuellement, précision de l'intention) et les résultats.
-
-## Captures d'écran
-
-| Chatbot | Historique des conversations |
-|---|---|
-| ![Chatbot](docs/screenshots/chatbot.png) | ![Historique](docs/screenshots/history.png) |
-
-| Tableau de bord administrateur | Gestion des intentions |
-|---|---|
-| ![Admin](docs/screenshots/admin-dashboard.png) | ![Intentions](docs/screenshots/intents.png) |
-
-| Statistiques agent | Historique complet des messages |
-|---|---|
-| ![Statistiques](docs/screenshots/stats.png) | ![Historique complet](docs/screenshots/full-history.png) |
 
 ## Sécurité
 
@@ -247,16 +216,7 @@ Le message de l'utilisateur est envoyé à Mistral (servi par Ollama) avec un pr
 - Les données de démonstration de ce dépôt sont fictives.
 - En production : utiliser un gestionnaire de secrets, HTTPS et des comptes de base de données à privilèges minimaux.
 
-## Limites et feuille de route
 
-- [ ] Tests automatisés (backend, services Python, Angular)
-- [ ] Évaluation systématique de la qualité de la recherche et des réponses
-- [ ] Docker Compose pour lancer tous les services en une commande
-- [ ] Pipeline CI (lint et tests) avec GitHub Actions
-- [ ] Journalisation structurée et supervision
-- [ ] Documentation complète de l'API (OpenAPI / Swagger)
-
-## Auteure
 
 **Ines Elouaer**
 Étudiante ingénieure en Data Science | IA et NLP | Applications IA full-stack
